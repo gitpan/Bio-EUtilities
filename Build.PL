@@ -21,7 +21,7 @@ my %module_build_args = (
     "cjfields <cjfields\@bioperl.org>"
   ],
   "dist_name" => "Bio-EUtilities",
-  "dist_version" => "1.70",
+  "dist_version" => "1.71",
   "license" => "perl",
   "module_name" => "Bio::EUtilities",
   "recommends" => {},

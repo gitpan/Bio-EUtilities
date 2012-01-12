@@ -16,7 +16,7 @@ package Bio::Tools::EUtilities::EUtilDataI;
 BEGIN {
   $Bio::Tools::EUtilities::EUtilDataI::AUTHORITY = 'cpan:CJFIELDS';
 }
-our $VERSION = '1.70'; # VERSION
+our $VERSION = '1.71'; # VERSION
 
 use strict;
 use warnings;

@@ -20,7 +20,7 @@ package Bio::Tools::EUtilities::Query;
 BEGIN {
   $Bio::Tools::EUtilities::Query::AUTHORITY = 'cpan:CJFIELDS';
 }
-our $VERSION = '1.70'; # VERSION
+our $VERSION = '1.71'; # VERSION
 
 use strict;
 use warnings;

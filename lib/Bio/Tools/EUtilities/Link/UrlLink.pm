@@ -20,7 +20,7 @@ package Bio::Tools::EUtilities::Link::UrlLink;
 BEGIN {
   $Bio::Tools::EUtilities::Link::UrlLink::AUTHORITY = 'cpan:CJFIELDS';
 }
-our $VERSION = '1.70'; # VERSION
+our $VERSION = '1.71'; # VERSION
 
 
 use base qw(Bio::Root::Root Bio::Tools::EUtilities::EUtilDataI);
