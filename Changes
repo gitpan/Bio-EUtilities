@@ -1,4 +1,10 @@
-Revision history for Bio-EUtilities  
+Revision history for Bio-EUtilities
+
+1.72      2012-01-17 22:12:06 America/Chicago
+  * Add explicit prereqs
+  * Migrate all tests from Bio::Root::Test, add Test::More as
+    a build requirement, add helper module for test loading
+  * Remove Data::Dumper from modules
 
 1.71      2012-01-12 16:20:26 America/Chicago
   * Full release (no changes from previous release)

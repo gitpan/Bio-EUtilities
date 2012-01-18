@@ -20,11 +20,10 @@ package Bio::Tools::EUtilities::Link;
 BEGIN {
   $Bio::Tools::EUtilities::Link::AUTHORITY = 'cpan:CJFIELDS';
 }
-our $VERSION = '1.71'; # VERSION
+our $VERSION = '1.72'; # VERSION
 
 use strict;
 use warnings;
-use Data::Dumper;
 
 use base qw(Bio::Tools::EUtilities Bio::Tools::EUtilities::EUtilDataI);
 

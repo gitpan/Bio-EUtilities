@@ -1,64 +1,42 @@
-# -*-Perl-*- Test Harness script for Bioperl
-# $Id: EUtilities.t 15112 2008-12-08 18:12:38Z sendu $
-#
-
-use strict;
-our $NUMTESTS;
-our $DEBUG;
-our %EUTILS;
 
 BEGIN {
-    $NUMTESTS = 4; # base number of tests (those not in blocks)
-
-    # I have set up eutils tests to run in sections for easier test maintenance
-    # and keeping track of problematic tests. The below hash is the list of
-    # tests, with test number and coderef.
-
-    # these now run very simple tests for connectivity and data sampling
-    # main tests now with the parser
-
-    %EUTILS = (
-        'efetch'        => {'tests' => 5,
-                            'sub'   => \&efetch},
-        'epost'         => {'tests' => 11,
-                            'sub'   => \&epost},
-        'esummary'      => {'tests' => 254,
-                            'sub'   => \&esummary},
-        'esearch'       => {'tests' => 13,
-                            'sub'   => \&esearch},
-        'einfo'         => {'tests' => 10,
-                            'sub'   => \&einfo},
-        'elink1'        => {'tests' => 8,
-                            'sub'   => \&elink1},
-        'egquery'       => {'tests' => 4,
-                            'sub'   => \&egquery},
-        );
-    $NUMTESTS += $EUTILS{$_}->{'tests'} for (keys %EUTILS);
-    $DEBUG = $ENV{'BIOPERLDEBUG'} || 0;
-    # this seems to work for perl 5.6 and perl 5.8
-
-    use Bio::Root::Test;
-
-    test_begin(-tests               => $NUMTESTS,
-               -requires_modules    => [qw(XML::Simple LWP::UserAgent)],
-               -requires_email      => 1,
-              );
-
-    use_ok('Bio::DB::EUtilities');
-    use_ok('LWP::UserAgent');
-    use_ok('Bio::Tools::EUtilities');
-    use_ok('Bio::Tools::EUtilities::EUtilParameters');
+  unless ($ENV{RELEASE_TESTING}) {
+    require Test::More;
+    Test::More::plan(skip_all => 'these tests are for release candidate testing');
+  }
 }
 
-my $email = test_email();
+use strict;
+use warnings;
+use Test::Most;
+use Bio::DB::EUtilities; # use_ok tested in 00-compile.t during release
 
-diag("Using $email for tests") if $DEBUG;
+my $test_ct = 1; # base number of tests (those not in blocks)
 
-# NOTE : Bio::DB::EUtilities is just a specialized pipeline to get any
-# data available via NCBI's Entrez interface, with a few convenience methods
-# to get UIDs and other additional information.  All data returned
-# using EFetch is raw (not Bioperl objects) and is meant to be piped into
-# other Bioperl modules at a later point for further processing
+my %eutils = (
+    'efetch'        => {'tests' => 5,
+                        'sub'   => \&efetch},
+    'epost'         => {'tests' => 11,
+                        'sub'   => \&epost},
+    'esummary'      => {'tests' => 254,
+                        'sub'   => \&esummary},
+    'esearch'       => {'tests' => 13,
+                        'sub'   => \&esearch},
+    'einfo'         => {'tests' => 10,
+                        'sub'   => \&einfo},
+    'elink1'        => {'tests' => 8,
+                        'sub'   => \&elink1},
+    'egquery'       => {'tests' => 4,
+                        'sub'   => \&egquery},
+);
+$test_ct += $eutils{$_}->{'tests'} for (keys %eutils);
+
+plan tests => $test_ct;
+
+my $debug = $ENV{BIOPERLDEBUG} || $ENV{BIOPERL_DEBUG} || 0;
+my $email = $ENV{BIOPERL_EMAIL};
+
+my ($eutil, $response);
 
 #   protein acc
 my @acc = qw(MUSIGHBA1 P18584 CH402638);
@@ -68,8 +46,6 @@ my @ids = sort qw(1621261 89318838 68536103 20807972 730439);
 
 # test search term
 my $term = 'dihydroorotase AND human';
-
-my ($eutil, $response);
 
 my %dbs = (taxonomy => 1,
            nucleotide => 1,
@@ -81,11 +57,16 @@ my %links = (protein_taxonomy => 1,
              protein_pubmed_refseq => 1
              );
 
-# this loops through the required tests, only running what is in %EUTILS
-for my $test (keys %EUTILS) {
-    $EUTILS{$test}->{'sub'}->();
-}
+SKIP: {
+    ok($email, 'Make sure email is set (set BIOPERL_EMAIL)');
+    skip("Must provide a valid email for tests", $test_ct - 1) if !defined($email);
+    diag("Using $email for tests") if $debug;
 
+    # this loops through the required tests, only running what is in %EUTILS
+    for my $test (keys %eutils) {
+        $eutils{$test}->{'sub'}->();
+    }
+}
 # Simple EFetch
 
 sub efetch {
@@ -475,5 +456,3 @@ sub egquery {
     cmp_ok(scalar(@gq), '>=', 30, 'get_GlobalQueries')
     }
 }
-
-1;

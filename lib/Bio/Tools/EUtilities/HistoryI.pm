@@ -21,7 +21,7 @@ package Bio::Tools::EUtilities::HistoryI;
 BEGIN {
   $Bio::Tools::EUtilities::HistoryI::AUTHORITY = 'cpan:CJFIELDS';
 }
-our $VERSION = '1.71'; # VERSION
+our $VERSION = '1.72'; # VERSION
 
 use strict;
 use warnings;

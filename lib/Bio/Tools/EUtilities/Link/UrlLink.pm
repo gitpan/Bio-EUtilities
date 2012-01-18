@@ -20,11 +20,9 @@ package Bio::Tools::EUtilities::Link::UrlLink;
 BEGIN {
   $Bio::Tools::EUtilities::Link::UrlLink::AUTHORITY = 'cpan:CJFIELDS';
 }
-our $VERSION = '1.71'; # VERSION
-
+our $VERSION = '1.72'; # VERSION
 
 use base qw(Bio::Root::Root Bio::Tools::EUtilities::EUtilDataI);
-use Data::Dumper;
 
 
 sub get_dbfrom { return shift->{'_dbfrom'}; }

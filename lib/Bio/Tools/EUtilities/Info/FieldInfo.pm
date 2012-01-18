@@ -20,7 +20,7 @@ package Bio::Tools::EUtilities::Info::FieldInfo;
 BEGIN {
   $Bio::Tools::EUtilities::Info::FieldInfo::AUTHORITY = 'cpan:CJFIELDS';
 }
-our $VERSION = '1.71'; # VERSION
+our $VERSION = '1.72'; # VERSION
 
 use base qw(Bio::Root::Root Bio::Tools::EUtilities::EUtilDataI);
 use strict;

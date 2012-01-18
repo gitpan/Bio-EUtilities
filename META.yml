@@ -3,11 +3,8 @@ abstract: "webagent which interacts with and retrieves data from\nNCBI's eUtils"
 author:
   - 'cjfields <cjfields@bioperl.org>'
 build_requires:
-  Bio::Root::Test: 0
-  File::Find: 0
-  File::Temp: 0
   Module::Build: 0.3601
-  Test::More: 0
+  Test::More: 0.94
 configure_requires:
   Module::Build: 0.3601
 dynamic_config: 0
@@ -23,19 +20,15 @@ requires:
   Bio::Root::IO: 0
   Bio::Root::Root: 0
   Bio::Root::RootI: 0
-  Data::Dumper: 0
   HTTP::Request: 0
   Text::Wrap: 0
   URI: 0
   XML::Simple: 0
-  base: 0
-  strict: 0
-  warnings: 0
 resources:
-  bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=Bio-EUtilities
+  bugtracker: https://redmine.open-bio.org/projects/bio-eutilities
   homepage: http://metacpan.org/release/Bio-EUtilities
   repository: git://github.com/bioperl/bio-eutilities.git
-version: 1.71
+version: 1.72
 x_Dist_Zilla:
   plugins:
     -
@@ -135,12 +128,32 @@ x_Dist_Zilla:
       name: '@CJFIELDS/EOLTests'
       version: 0.02
     -
+      class: Dist::Zilla::Plugin::ExecDir
+      name: '@CJFIELDS/ExecDir'
+      version: 4.300006
+    -
       class: Dist::Zilla::Plugin::PodWeaver
       name: '@CJFIELDS/PodWeaver'
       version: 3.101641
     -
-      class: Dist::Zilla::Plugin::AutoPrereqs
-      name: AutoPrereqs
+      class: Dist::Zilla::Plugin::Prereqs
+      config:
+        Dist::Zilla::Plugin::Prereqs:
+          phase: build
+          type: requires
+      name: BuildRequires
+      version: 4.300006
+    -
+      class: Dist::Zilla::Plugin::Prereqs
+      config:
+        Dist::Zilla::Plugin::Prereqs:
+          phase: runtime
+          type: requires
+      name: Requires
+      version: 4.300006
+    -
+      class: Dist::Zilla::Plugin::ManifestSkip
+      name: ManifestSkip
       version: 4.300006
     -
       class: Dist::Zilla::Plugin::FinderCode

@@ -7,11 +7,8 @@ use Module::Build 0.3601;
 
 my %module_build_args = (
   "build_requires" => {
-    "Bio::Root::Test" => 0,
-    "File::Find" => 0,
-    "File::Temp" => 0,
     "Module::Build" => "0.3601",
-    "Test::More" => 0
+    "Test::More" => "0.94"
   },
   "configure_requires" => {
     "Module::Build" => "0.3601"
@@ -21,7 +18,7 @@ my %module_build_args = (
     "cjfields <cjfields\@bioperl.org>"
   ],
   "dist_name" => "Bio-EUtilities",
-  "dist_version" => "1.71",
+  "dist_version" => "1.72",
   "license" => "perl",
   "module_name" => "Bio::EUtilities",
   "recommends" => {},
@@ -32,14 +29,10 @@ my %module_build_args = (
     "Bio::Root::IO" => 0,
     "Bio::Root::Root" => 0,
     "Bio::Root::RootI" => 0,
-    "Data::Dumper" => 0,
     "HTTP::Request" => 0,
     "Text::Wrap" => 0,
     "URI" => 0,
-    "XML::Simple" => 0,
-    "base" => 0,
-    "strict" => 0,
-    "warnings" => 0
+    "XML::Simple" => 0
   },
   "script_files" => []
 );
