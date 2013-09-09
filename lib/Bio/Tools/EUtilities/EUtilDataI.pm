@@ -1,28 +1,21 @@
-#
-# BioPerl module for Bio::Tools::EUtilities::EUtilDataI
-#
-# Please direct questions and support issues to <bioperl-l@bioperl.org>
-#
-# Cared for by Chris Fields <cjfields at bioperl dot org>
-#
-# Copyright Chris Fields
-#
-# You may distribute this module under the same terms as perl itself
-#
-# POD documentation - main docs before the code
-
-
 package Bio::Tools::EUtilities::EUtilDataI;
 BEGIN {
-  $Bio::Tools::EUtilities::EUtilDataI::AUTHORITY = 'cpan:CJFIELDS';
+  $Bio::Tools::EUtilities::EUtilDataI::AUTHORITY = 'cpan:BIOPERLML';
 }
-our $VERSION = '1.72'; # VERSION
-
+{
+  $Bio::Tools::EUtilities::EUtilDataI::VERSION = '1.73';
+}
+use utf8;
 use strict;
 use warnings;
+use base qw(Bio::Root::RootI);
 use Text::Wrap qw(wrap);
 
-use base qw(Bio::Root::RootI);
+# ABSTRACT: EUtil data object interface.
+# AUTHOR:   Chris Fields <cjfields@bioperl.org>
+# OWNER:    2006-2013 Chris Fields
+# LICENSE:  Perl_5
+
 
 
 {
@@ -70,13 +63,18 @@ sub _text_wrap {
 1;
 
 __END__
+
 =pod
 
 =encoding utf-8
 
 =head1 NAME
 
-Bio::Tools::EUtilities::EUtilDataI
+Bio::Tools::EUtilities::EUtilDataI - EUtil data object interface.
+
+=head1 VERSION
+
+version 1.73
 
 =head1 SYNOPSIS
 
@@ -126,39 +124,6 @@ the object and sets internal parameters for the various data objects. Methods
 corresponding to the data type simply return the set data or iterate through the
 data sets if the values are more complex. Data can alternatively be passed
 through the object constructor.
-
-=head2 Support
-
-Please direct usage questions or support issues to the mailing list:
-
-I<bioperl-l@bioperl.org>
-
-rather than to the module maintainer directly. Many experienced and
-reponsive experts will be able look at the problem and quickly
-address it. Please include a thorough description of the problem
-with code and data examples if at all possible.
-
-=head2 Reporting Bugs
-
-Report bugs to the Bioperl bug tracking system to
-help us keep track the bugs and their resolution.
-Bug reports can be submitted via the web.
-
-  https://redmine.open-bio.org/projects/bioperl/
-
-=head1 NAME
-
-Bio::Tools::EUtilities::EUtilDataI - eutil data object interface
-
-=head1 AUTHOR
-
-Email cjfields at bioperl dot org
-
-=head1 APPENDIX
-
-The rest of the documentation details each of the
-object methods. Internal methods are usually
-preceded with a _
 
 =head2 eutil
 
@@ -213,16 +178,43 @@ preceded with a _
  Args     : string
  Note     : Internal use only.  Simple wrapper method.
 
+=head1 FEEDBACK
+
+=head2 Mailing lists
+
+User feedback is an integral part of the evolution of this and other
+Bioperl modules. Send your comments and suggestions preferably to
+the Bioperl mailing list.  Your participation is much appreciated.
+
+  bioperl-l@bioperl.org                  - General discussion
+  http://bioperl.org/wiki/Mailing_lists  - About the mailing lists
+
+=head2 Support
+
+Please direct usage questions or support issues to the mailing list:
+I<bioperl-l@bioperl.org>
+
+rather than to the module maintainer directly. Many experienced and
+reponsive experts will be able look at the problem and quickly
+address it. Please include a thorough description of the problem
+with code and data examples if at all possible.
+
+=head2 Reporting bugs
+
+Report bugs to the Bioperl bug tracking system to help us keep track
+of the bugs and their resolution. Bug reports can be submitted via the
+web:
+
+  https://redmine.open-bio.org/projects/bioperl/
+
 =head1 AUTHOR
 
-cjfields <cjfields@bioperl.org>
+Chris Fields <cjfields@bioperl.org>
 
-=head1 COPYRIGHT AND LICENSE
+=head1 COPYRIGHT
 
-This software is copyright (c) 2011 by Chris Fields.
+This software is copyright (c) 2006-2013 by Chris Fields.
 
-This is free software; you can redistribute it and/or modify it under
-the same terms as the Perl 5 programming language system itself.
+This software is available under the same terms as the perl 5 programming language system itself.
 
 =cut
-

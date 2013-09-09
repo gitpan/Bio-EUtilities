@@ -1,11 +1,10 @@
-Build.PL
 Changes
 LICENSE
 MANIFEST
 MANIFEST.SKIP
 META.json
 META.yml
-README
+Makefile.PL
 dist.ini
 inc/TestHelper.pm
 lib/Bio/DB/EUtilities.pm
@@ -27,6 +26,7 @@ lib/Bio/Tools/EUtilities/Summary/DocSum.pm
 lib/Bio/Tools/EUtilities/Summary/Item.pm
 lib/Bio/Tools/EUtilities/Summary/ItemContainerI.pm
 scripts/bp_einfo.pl
+scripts/bp_genbank_ref_extractor.pl
 t/00-compile.t
 t/EUtilParameters.t
 t/data/eutils/egquery.xml
@@ -69,5 +69,7 @@ t/espell.t
 t/esummary.t
 t/release-EUtilities.t
 t/release-eol.t
+t/release-mojibake.t
 t/release-no-tabs.t
+t/release-pod-coverage.t
 t/release-pod-syntax.t
